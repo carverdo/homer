@@ -11,9 +11,10 @@ Flask-Migrate, Flask-WTF, wtforms, psycopg2, requests.
 2. Name the local database in `config_vars`;
 3. Physically create database of same name (in pgadmin);
 4. In one_offs, follow db instructions under `db_create_migrate.py` OR `manager.py` 
-and `db_init_data.py` (modify this to your own setup; you'll need to move 
-to/from one_offs to run); to establish database model in pgadmin;
+(modify this to your own setup; you'll need to move to/from one_offs 
+to run) to establish database model in pgadmin;
 Make sure your one_off .gitignore is not mangled by this to and fro.
+You might run/modify `db_init_data.py` to give an initial populate. 
 5. You may need to create a number of local environment variables 
 in order for the config files to work properly.
 6. Run `run`.

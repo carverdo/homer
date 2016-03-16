@@ -9,12 +9,12 @@
 &nbsp;
 <div class="table-responsive"> <!-- id="scroller"> -->
     <table class="table table-hover table-condensed">
-        <thead style="color:green">
-            <td> IP Address </td>
-            <td> Visit Dates </td>
-            <td> Latitude </td>
-            <td> Longitude </td>
-        </thead>
+        <thead style="color:green"><tr>
+            <th> IP Address </th>
+            <th> Visit Dates </th>
+            <th> Latitude </th>
+            <th> Longitude </th>
+        </tr></thead>
         <tbody data-link="row" class="rowlink">
         {% for ro in form %}
             <tr class="prof_row_style">
@@ -24,6 +24,6 @@
                 <td> {{ ro.longitude }} </td>
             </tr>
         {% endfor %}
-    </tbody>
+        </tbody>
     </table>
 </div>
