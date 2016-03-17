@@ -38,17 +38,13 @@ boxes round text, text position */
     min-height: 65px;
     border-radius: 3px;
 }
-.navbar-brand {
-    margin-top: -34px;
-}
+.navbar-brand {margin-top: -34px;}
 .navbar-nav > li {
     min-height: 65px;
     font-size: 1.5em;
     border-right: 1px solid white;
 }
-.navbar-nav > li:last-child {
-    border-right: none;
-}
+.navbar-nav > li:last-child {border-right: none;}
 .navbar-default .navbar-nav > li > a { /* needs full address */
     padding-top: 22px;
     color: linen;
@@ -61,21 +57,15 @@ boxes round text, text position */
     border-radius: 4px;
 }
 /* borders inside dropdown */
-#navstyle_dropdown > li {
-    border-bottom: 1px solid white;
-}
+#navstyle_dropdown > li {border-bottom: 1px solid white;}
 /* NAVBAR HOVERS
  keep hypertext within Navbar unchanged on action */
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:active,
-.navbar-default .navbar-nav > .open > a:focus {
-    color: linen;
-}
+.navbar-default .navbar-nav > .open > a:focus {color: linen;}
 /* NAVBAR DROPDOWN HEADER
  give a background */
-.navbar-default .navbar-nav > .open > a:focus {
-    background-color: CadetBlue;
-}
+.navbar-default .navbar-nav > .open > a:focus {background-color: CadetBlue;}
 /* DROPDOWN CONTENT Hypertext */
 #navstyle_dropdown > li > a {
     padding: 14px 0px 14px 36px;
@@ -93,6 +83,9 @@ in the navbar and in the dropdowns */
 /* ===============================
    MAKE THE TABLE SCROLL AND WRAP
 ================================== */
+table {border: 1px solid black;}
+thead {color: green;}
+td, th {vertical-align: top; text-align: left;}
 .table-responsive {
     width: 100%;
     margin-bottom: 15px;
@@ -109,14 +102,8 @@ in the navbar and in the dropdowns */
     overflow-y: scroll;
     overflow-x: hidden;
 }
-.table-responsive > .table > thead > tr > th,
-.table-responsive > .table > tbody > tr > th,
-.table-responsive > .table > tfoot > tr > th,
-.table-responsive > .table > thead > tr > td,
-.table-responsive > .table > tbody > tr > td,
-.table-responsive > .table > tfoot > tr > td {white-space: nowrap;}
-
-th {text-align: center;}
+.table-responsive th,
+.table-responsive td {white-space: nowrap;}
 
 .prof_row_style {
     color: white;
@@ -127,23 +114,12 @@ th {text-align: center;}
     background: #999; /*################ Old browsers */
     color:#FF793E;
 }
-
+.prof_row_style > td {width: 10px;}
 /* =================
    SPECIFIC STYLING
 ================= */
-/*
-.texvert {  /* NO IDEA, vertical text?
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    float: left;
-    vertical-align:top;
-}
-#panel-transparent {background: none; text-align: center;}
-*/
 .redder {color: red; font-weight: bold; font-size: 1.4em} /* for messages */
+.greyer {color: grey;} /* for form boxese not touched */
 .alert {font-size: 1.4em} /* for messages */
 .btn-box {width: 40px; height: 40px;} /* to make buttons all double-width */
 #logo {height: 100%; margin-top: -65px; margin-left: 100px;}
@@ -154,164 +130,11 @@ th {text-align: center;}
     font-size: 48px;
     opacity: 0.7;
 }
-#small-logo {
-    color: white;
-    background: black;
-    text-align: left;
-    font-size: 13px;
-    opacity: 0.45;
-    padding-top: 5px;
-    padding: 5px;
-}
-
 /* PARALLAX =================
  settings for background image
  =================*/
+/* makes panels the entire window height; DOES IT? */
+.full-screen {min-height: 400px;}
 #roper {background: url(../image/shoelaces2.png); height: 750px;}
 /* main holder for parallax */
 section {text-align: center;}
-/* makes panels the entire window height; DOES IT? */
-.full-screen {min-height: 400px;}
-.blue {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #3883d8;
-}
-.red {background-color: #cf3535;}
-div .imgFit {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-#boxer {
-    background: url(../image/cube.png);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    min-height: 300px; /* makes panels the entire window height; DOES IT? */
-}
-.garden {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    border: 2px solid #CCC;
-    border-radius: 15px;
-}
-.ball {
-    position: absolute;
-    top: 45%;
-    left: 45%;
-    width: 20px;
-    height: 20px;
-    background: green;
-    border-radius: 100%;
-}
-
-/* =================
-   TOGGLE BUTTON
-================= */
-.toggle-button {
-    background-color: orange;
-    margin: 5px 0; /* order: top+bottom left+right*/
-    border-radius: 20px;
-    border: 1px solid #FF8C00;
-    height: 20px;
-    cursor: pointer;
-    width: 50px;
-    position: relative;
-    display: inline-block;
-    user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
-}
-.toggle-button button {
-    cursor: pointer;
-    outline: 0;
-    display:block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    border-radius: 100%;
-    width: 24px;
-    height: 24px;
-    background-color: LightGrey;
-    float: left;
-    margin: -3px 0 0 -3px;
-    border: 1px solid Gray;
-    transition: left 0.3s;
-}
-.toggle-button-selected {
-    background-color: Green; /*#83B152 *green*/
-    border: 1px solid White;
-}
-.toggle-button-selected button {
-    left: 26px;
-    top: 0;
-    margin: 0;
-    border: none;
-    width: 24px;
-    height: 24px;
-    background-color: LightGrey;
-    border: 1px solid Gray;
-    box-shadow: 0 0 4px rgba(0,0,0,0.1);
-}
-
-
-
-/* FOR OUR TYPING EFFECT */
-.css-typing {
-    width: 80em;
-    white-space: nowrap;
-    overflow: hidden;
-    -webkit-animation: type 5s steps(100, end);
-    animation: type 5s steps(100, end);
-}
-@keyframes type {
-    from {width: 0;}
-}
-@-webkit-keyframes type {
-    from {width: 0;}
-}
-.myButton {
-    background-color: transparent;
-    border: 1px solid #eb675e;
-    padding: 6px 15px;
-    margin: 6px 15px;
-    text-decoration: none;
-    cursor: pointer;
-}
-.myButton:hover {
-    background-color: #eb675e;
-    color: white;
-}
-.stampLoaderButton {
-    .myButton;
-}
-.floating-box {
-    vertical-align: top;
-    display: inline-block;
-    max-width: 780px;
-    margin: 10px;
-}
-.flippee, .flip, .res_container, .headerStats {
-    padding: 5px;
-    word-wrap: break-word;
-    background-color: darkseagreen;
-    font-weight: normal;
-    border: solid 1px #c3c3c3;
-}
-.cellRun {
-    color: white;
-    border: none;
-}
-table {
-   border: 1px solid black;
-}
-td {
-    vertical-align: top;
-    text-align: center;
-}

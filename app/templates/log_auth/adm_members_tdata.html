@@ -1,7 +1,7 @@
 <div class="form-group">
     {% for ro in form %}
         <div class="input-group">
-            <span style="color:grey;">
+            <span class="greyer">
                 {{ ro.id(size=5) }}
                 {{ ro.firstname }}
                 {{ ro.surname }}
@@ -11,7 +11,7 @@
                 {{ ro.adminr }}
                 {{ ro.active }}
                 {{ ro.confirmed }}
-                <span style="color:red;">{{ ro.markfordeletion }}</span>
+                <span class="redder">{{ ro.markfordeletion }}</span>
             </span>
         </div>
     {% endfor %}
