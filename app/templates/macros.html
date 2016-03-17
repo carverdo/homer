@@ -58,30 +58,3 @@
     </div>
 </div>
 {% endmacro %}
-
-
-<!-- PRESENTATION OF INDIVIDUAL TABLE ROWS -->
-{% macro table_row(obj) %}
-<div class="table-responsive" id="scroller">
-    <table class="table table-hover table-condensed">
-        <tbody data-link="row" class="rowlink">
-            <tr>
-                <td> id </td>
-                <td> function </td>
-                <td> next_run_time </td>
-                <td> args </td>
-                <td> kwargs </td>
-            </tr>
-            {% for ro in obj %}
-                <tr class="prof_row_style">
-                    <td> {{ro.id}} </td>
-                    <td> {{ro.name}} </td>
-                    <td> {{ro.next_run_time}} </td>
-                    <td> {{ro.args}} </td>
-                    <td> {{ro.kwargs}} </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-{% endmacro %}
