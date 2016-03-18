@@ -8,13 +8,14 @@ running.
 src root  and import package requirements. At a minimum you will need Flask, 
 Flask-Login, Flask-DebugToolbar, Flask-SQLalchemy, Flask-Script, 
 Flask-Migrate, Flask-WTF, wtforms, psycopg2, requests.
-2. Name the local database in `config_vars`;
-3. Physically create database of same name (in pgadmin);
+2. Physically create database in pgadmin;
+3. SameName the local database in `config_vars`;
 4. In one_offs, follow db instructions under `db_create_migrate.py` OR `manager.py` 
 (modify this to your own setup; you'll need to move to/from one_offs 
-to run) to establish database model in pgadmin;
+to run) to establish database model in pgadmin; you may need to delete
+any existing migrations folder.
 Make sure your one_off .gitignore is not mangled by this to and fro.
-You might run/modify `db_init_data.py` to give an initial populate. 
+You might also run/modify `db_init_data.py` to give an initial populate. 
 5. You may need to create a number of local environment variables 
 in order for the config files to work properly.
 6. Run `run`.
@@ -22,21 +23,23 @@ in order for the config files to work properly.
 Now you're free to build out your project on top of this skeleton.
 
 ## Explanations (directories/Files outside of app)
-`logs, migrations, tests` self-explanatory.
-`one_offs` e.g. for stuff used in set up only.
-`config` and variants primarily for DB setting;
-`manager` sets up commands for you to use cmd directly; run from cmd.
-`procfile` see more in `heroku`.
+`logs, migrations, tests` self-explanatory.  
+`one_offs` e.g. for stuff used in set up only.  
+`config` and variants primarily for DB setting.  
+`manager` sets up commands for you to use cmd directly; run from cmd.  
+`procfile` see more in `heroku`.  
 `requirements.txt`: keep up to date; useful for moving to production.
-NB. Will always be a longer than you suspect (dependencies).
+NB. Will always be a longer than you suspect (dependencies).  
+NB2. Make sure you have included gunicorn.
 
 ## Explanations (app)
 there are three main blueprint areas: `log_auth`, `log_records`, and 
 `proj` each of which gets paired with the app as part of `create_app`.
 
-`log_auth` holds a user login system (since every project will need something similar).
-`proj` is empty, waiting to be populated for each user-case. Contains static and 
-templates (see below)... more to follow.
+`log_auth` holds a user login system (since every project will 
+need something similar).  
+`proj` is empty, waiting to be populated for each user-case. Contains 
+static and templates (see below)... more to follow.  
 `log_records` for easy inspecting of your logs.
 
 `templates and static/css`
@@ -102,42 +105,48 @@ NB Any pages with any references to dbase will not present properly.
 5. got rid of stray folders?
 6. gitignores all ok?
 7. procfile names all good?
-8. requirements.txt correct?
+8. requirements.txt correct? got gunicorn?
 9. git up to date?
-10. double-checked that don't need any config / environ vars in heroku?
-11. does the slug look too big (7MB about right)?
+10. double-checked all config / environ vars in heroku?
+11. does the slug look too big (37MB about right)?
 
 ## Databases / Provision a database
 You still don't have a production database.
 `Resources / Add-ons`: just type postgres in the box and click/select 
 `Heroku Postgres Hobby-Dev Free` Provision.
 ### Promote
-In git bash if we haven't already, `heroku login`.
+In cmd  if we haven't already, `heroku login`.
 `heroku addons` will show us our databases.
-`heroku pg:promote DATABASE --app [NAME OF APP]` (which means rewire DATABASE; test this by looking to connection
-setting `Psql` on the heroku dashboard). Not strictly necessary with only one db, but 
-it will re-title the db with an easier-to-remember colour-scheme name.
+`heroku pg:promote DATABASE --app [NAME OF APP]` (which means rewire 
+DATABASE; test this by looking at your config vars on heroku). 
+Not strictly necessary with only one db, but it will re-title the db 
+with an easier-to-remember name.
 ### Capture/Backup facility
-`heroko pg:backups capture --app [APP NAME]`: captures this facility, ie now you can use 'backups'.
-
+`heroko pg:backups capture --app [APP NAME]`: captures this facility, 
+ie now you can use 'backups'.
 
 ### Copy across a DB
-In pgAdmin right-click and `backup` to somewhere in dropbox. Copy the link which will look
-like this (go into dropbox.com and share link):
+In pgAdmin right-click and `backup` to somewhere in dropbox. 
+S3 or...
+Copy across to s3, make url public, copy its address and paste.
+...Dropbox 
+Copy the link which will look like this (go into dropbox.com and share link):
 `https://www.dropbox.com/s/8a2cmqr9hho96z3/gscore_v0.dump?dl=0`  
 But adjust (see start; drop the end):
 `https://dl.dropboxusercontent.com/s/8a2cmqr9hho96z3/gscore_v0.dump`
-And trick the system into using this back-up to 'restore' our database -
-`heroku pg:backups restore '[DROPBOX LINK]' [DATABASE] --app [APP NAME]` (keep the single quotation
-marks - don't mistakenly use GRAVE ACCENTS!; rid squares, use real link, real database name eg HEROKU_POSTGRES_COPPER_URL)  
+With our url, trick the system into using this back-up to 'restore' 
+our database -
+`heroku pg:backups restore '[DROPBOX LINK]' [DATABASE] --app [APP NAME]` 
+(keep the single quotation marks - don't mistakenly use GRAVE ACCENTS!; 
+rid squares, use real link, real database name eg HEROKU_POSTGRES_COPPER_URL)  
 Will get a destruction warning...
 Quick-check: heroku dashboard should now show correct number of tables.
 
 ## Config Vars (under Settings)
-Add a `SECRET_KEY` (otherwise you end up with lots of CSRF errors as heroku keeps regenerating);
-no need for quotation marks as you enter the number. Only need to do once per project.
+Add a `SECRET_KEY` (otherwise you end up with lots of CSRF errors as 
+heroku keeps regenerating); no need for quotation marks as you enter the number. 
+Only need to do once per project.
 Repeat for any other config vars set by environment.
 
 ## Debug = False
 Don't forget.
-Finito!
