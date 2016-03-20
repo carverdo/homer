@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block redder %}
+{% endblock %}
+
+{% block content %}
+<p>heres some text</p>
+<!-- grab location data -->
+<p id="lalo"></p>
+<div id="latlng" data-value="54.9882,-1.5747">temp</div>
+<div id="placeName">bish</div>
+<div id="result">result</div>
+
+<script src={{map_url}}></script>
+<script src="static/js/snips/locn.js"></script>
+{% endblock %}

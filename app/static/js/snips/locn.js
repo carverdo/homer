@@ -1,31 +1,42 @@
 // Defines Function and Calls (producing return)
 // ============================================================
 var crd;
-getLocation();
+var geocoder;
+var latlngStr = '', lat = 0.0, lng = 0.0;
+var latlng;
+var placeName='xx';
+
+$(document).ready(function() {
+    geocoder = new google.maps.Geocoder();
+    // setInterval("getLocation()", 5000);
+    getLocation();
+});
+
 
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(success);
     } else {
-        popEle("lalo", "Geolcation switched off or not supported.");
+        $("#lalo").text('Geolocation switched off or not supported.');
     }
 }
 
 function success(pos) {
-    crd = pos.coords;
-    res = {'lat': crd.latitude, 'long': crd.longitude};
-    // sends it back for database handling
-    $.getJSON('./_clientdata', res, function(data) {
-        $("#result").text(data.result);
+    from_LaLo_to_Place(pos);
+}
+
+function from_LaLo_to_Place(pos) {
+    latlng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+        placeName = results[0].formatted_address;
+        $("#placeName").text(placeName);
+
+        res = {'lat': pos.coords.latitude, 'long': pos.coords.longitude, 'place': placeName};
+        $("#lalo").text(JSON.stringify(res) + $.now());
+
+        // sends it back for database handling
+        $.getJSON('./_multilocs', res, function(data) {
+            $("#result").text(data.result);
+        });
     });
-    // not necessarily echoed in template
-    popEle("lalo", JSON.stringify(res));
 }
-
-function popEle(name, val) {
-    myElem = document.getElementById(name);
-    if (myElem !== null) {
-        myElem.innerHTML = val;
-    }
-}
-

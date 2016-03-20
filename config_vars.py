@@ -19,10 +19,8 @@ MIN_PASS_LEN = 6
 ADMIN_USER = False
 INITIALLY_ACTIVE = True
 # first users under db_init -
-RIBCAGE_KEY01 = os.environ.get('RIBCAGE_ADMIN_KEYS1')
-RIBCAGE_KEY01 = RIBCAGE_KEY01.split(' ')
-RIBCAGE_KEY02 = os.environ.get('RIBCAGE_ADMIN_KEYS2')
-RIBCAGE_KEY02 = RIBCAGE_KEY02.split(' ')
+RIBCAGE_KEY01 = os.environ.get('RIBCAGE_ADMIN_KEYS1', 'BLANK BLANK').split()
+RIBCAGE_KEY02 = os.environ.get('RIBCAGE_ADMIN_KEYS2', 'BLANK BLANK').split()
 
 # ====================
 # CLIENT IP HANDLING
@@ -58,6 +56,14 @@ AWS_KEYS = {
     'S3_KEY': tmp[0],
     'S3_SECRET': tmp[1]
 }
+
+# ====================
+# MAP VARIABLES
+# ====================
+GOOGLE_MAP_KEY = os.environ.get('GOOGLE_MAP_KEY', 'BLANK')
+GOOGLE_MAP_KEY = 'AIzaSyCUUQ2wiXcK1ujPsk25QAd6aAgLjhcdpUM'
+MAP_URL = 'https://maps.googleapis.com/maps/api/js?key={}'.format(GOOGLE_MAP_KEY)
+
 
 # ========================
 if __name__ == '__main__':
