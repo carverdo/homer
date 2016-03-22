@@ -138,3 +138,27 @@ td, th {vertical-align: top; text-align: left;}
 #roper {background: url(../image/shoelaces2.png); height: 750px;}
 /* main holder for parallax */
 section {text-align: center;}
+
+/* FORMS & BUTTONS =================
+ =================*/
+.form-group {
+    margin: auto;
+    width: 40%;
+}
+.form-control {
+    text-align: right;
+}
+.myButton {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #eb675e;
+    margin: 10px 0px 10px 0px;
+    padding: 6px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+.myButton:hover {
+    background-color: #eb675e;
+    color: white;
+}
