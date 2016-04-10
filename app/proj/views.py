@@ -58,6 +58,13 @@ def grid():
     return render_template('./proj/grid_tdata.html', map_url=MAP_URL)
 
 
+@proj.route('/add_tees', methods=['POST', 'GET'])
+def add_tees():
+    # DATABASE: create an rV, and capture its id
+    rv_id = 1
+    return render_template('./proj/add_tees.html', rv_id=rv_id, r_args=request.args.items())
+
+
 # =================================================
 # CALCULATION SCRIPTS
 # USED FOR OUR AJAX REQUESTS
@@ -75,3 +82,11 @@ def multilocs():
     me['dists'] = dists
     print me
     return jsonify(result=me.values())
+
+
+@proj.route('/_add_tee')
+def _add_tee():
+    print request.args
+    print request.args.values()
+    # DATABASE: add email invite to our rV group
+    return jsonify(result=request.args.values())
