@@ -4,21 +4,20 @@
 {% endblock %}
 
 {% block content %}
-<!-- grab location data -->
-<p id="lalo"></p>
-<p>-----------</p>
-<!--<div id="latlng" data-value="54.9882,-1.5747">temp</div> -->
+<!--
+<p>Your current location</p>
 <div id="placeName">place to be filled</div>
-<p>-----------</p>
-<div id="result">result</div>
-<p>-----------</p>
 <div id="accuracy">accuracy</div>
+<p>-----------</p>
+<p>Distance to target, km:</p>
+<div id="result">result</div>
+-->
 
 <form action="add_tees" method="get">
 <div class="form-group">
     <div class="input-group">
         <span class="input-group-addon">Name your rendezView</span>
-        <input class="form-control" type="text" name="rv_name" value="[EMAIL]rendezView">
+        <input class="form-control" type="text" name="rv_name" value="rendezViewTest">
     </div>
     <div class="input-group">
         <span class="input-group-addon">Set the expiry time</span>
@@ -26,17 +25,20 @@
     </div>
     <div class="input-group">
         <span class="input-group-addon">TargetLat</span>
-        <input class="form-control" type="number" name="targLat" id="targLat" value=51>
+        <input class="form-control" type="number" step="0.01" name="targLat" id="targLat" value=51>
     </div>
     <div class="input-group">
         <span class="input-group-addon">TargetLong</span>
-        <input class="form-control" type="number" name="targLong" id="targLong" value=0>
+        <input class="form-control" type="number" step="0.01" name="targLong" id="targLong" value=0>
     </div>
     <input type="submit" value="create rendezView" class="myButton">
 </div>
 </form>
+
+<!--<div id="latlng" data-value="54.9882,-1.5747">temp</div> -->
 <!--
--->
+<p id="lalo"></p>
 <script src={{map_url}}></script>
 <script src="static/js/snips/locn.js"></script>
+-->
 {% endblock %}

@@ -14,12 +14,10 @@ var options = {
 };
 
 
-
-
 $(document).ready(function() {
     target = {
-        'latitude': $("#targLat").val(),
-        'longitude': $("#targLong").val()
+        'latitude': $("#targLat").text(),
+        'longitude': $("#targLong").text()
     };
     geocoder = new google.maps.Geocoder();
     // setInterval("getLocation()", 5000);
@@ -37,7 +35,7 @@ function getLocation() {
 }
 function success(pos) {
     var crd = pos.coords;
-    $("#accuracy").text('More or less ' + crd.accuracy + ' meters.');
+    $("#accuracy").text('Current accuracy, c. +/- ' + crd.accuracy + ' meters.');
     // are we there yet?
     // parseInt is ROUGH!
     if (parseInt(target.latitude) === parseInt(crd.latitude) &&
@@ -51,12 +49,14 @@ function success(pos) {
         placeName = results[0].formatted_address;
         $("#placeName").text(placeName);
 
-        res = {'lat': crd.latitude, 'long': crd.longitude, 'place': placeName};
-        $("#lalo").text(JSON.stringify(res) + $.now());
+        res = {'lat': crd.latitude, 'long': crd.longitude, 'place': placeName,
+            'target': target
+        };
+        // $("#lalo").text(JSON.stringify(res) + $.now());
 
         // sends it back for database handling
         $.getJSON('./_multilocs', res, function(data) {
-            $("#result").text(data.result);
+            $("#result").text(data.dists);
         });
     });
 }

@@ -1,6 +1,7 @@
 /* Simple Simple */
 
 // var cur_tees = [];
+var ct = 0;
 
 $(document).ready(function(){
     // some pretty boxes
@@ -25,7 +26,13 @@ $(document).ready(function(){
                     // append, then clear the input box
                     $("#ems_cont").append(el);
                     $('input, email').val('');
+
                 });
+                // one-off text add
+                if (ct == 0) {
+                    $('#ems_cont').append('<p>Click on any email to remove</p>');
+                };
+                ct += 1;
             }
             , 1200);
         };

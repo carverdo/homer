@@ -5,23 +5,42 @@
 
 {% block content %}
 
-<div id="result">result</div>
+<div class="col-xs-12 col-md-8">
+    <div class="panel">
+        <div class="panel-heading btn-success"><h2 style="font-size:18px">
+            Your rendezView</h2></div>
+        <div class="panel-body" align="center">
 
-<form><div class="form-group">
-    <div class="input-group">
-        <span class="input-group-addon">Add your rVitees</span>
-        <input class="form-control" type="email" name="rvite_email"
-               placeholder="Enter email here. It will automatically add once you finish typing.">
+            <form><div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">Add your rVitees</span>
+                    <input class="form-control" type="email" name="rvite_email"
+                           placeholder="Enter email here and it will automatically add once you finish typing.">
+                </div>
+            </div></form>
+            <table class="table-responsive">
+            <tr><th>Your current location</th><th><div id="placeName"></div></th></tr>
+            <tr><th>Accuracy</th><th><div id="accuracy"></div></th></tr>
+            <tr><th>Current distance to the rendezView, km</th><th><div id="result"></div></th></tr>
+            {% for (k, v) in r_args %}
+                <tr><td>{{k}}</td><td>{{v}}</td></tr>
+            {% endfor %}
+            <tr><td>rv_id</td><td>{{rv_id}}</td></tr>
+            </table>
+            <div id="ems_cont"></div>
+        </div>
     </div>
-</div></form>
-
-<div id="ems_cont">
-    <p>{{rv_id}}</p>
-    <p>{{r_args}}</p>
-    <br>
 </div>
 
+
+<p id="lalo"></p>
+<div id="targLat" style="display: none;">{{targ[0]}}</div>
+<div id="targLong" style="display: none;">{{targ[1]}}</div>
+
+<!--<div id="latlng" data-value="54.9882,-1.5747">temp</div> -->
 <!--
 -->
+<script src={{map_url}}></script>
+<script src="static/js/snips/locn.js"></script>
 <script src="static/js/snips/add_tee.js"></script>
 {% endblock %}
