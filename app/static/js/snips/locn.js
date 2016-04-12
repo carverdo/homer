@@ -35,7 +35,7 @@ function getLocation() {
 }
 function success(pos) {
     var crd = pos.coords;
-    $("#accuracy").text(crd.accuracy + ' m');
+    $("#accuracy").text(Math.round(crd.accuracy) + ' m');
     // are we there yet?
     // parseInt is ROUGH!
     if (parseInt(target.latitude) === parseInt(crd.latitude) &&
