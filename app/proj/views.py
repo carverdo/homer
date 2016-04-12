@@ -39,7 +39,7 @@ def grid():
 @proj.route('/add_tees', methods=['POST', 'GET'])
 def add_tees():
     # DATABASE: create an rV, and capture its id
-    print request.args
+    # print request.args
     targ = (
         request.args.get('targLat', 0, type=float),
         request.args.get('targLong', 0, type=float)
@@ -54,8 +54,8 @@ def add_tees():
 # =================================================
 @proj.route('/_multilocs')
 def multilocs():
-    print 'multilocs'
-    print request.args
+    # print 'multilocs'
+    # print request.args
     targ = (
         request.args.get('target[latitude]', 0, type=float),
         request.args.get('target[longitude]', 0, type=float)
@@ -71,7 +71,7 @@ def multilocs():
 
     dists = [haversine(targ, lalo) for lalo in lalos]
     me['dists'] = dists
-    print me
+    # print me
     return jsonify(result=me.values(), dists=dists)
 
 

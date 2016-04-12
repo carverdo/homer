@@ -35,7 +35,7 @@ function getLocation() {
 }
 function success(pos) {
     var crd = pos.coords;
-    $("#accuracy").text('Current accuracy, c. +/- ' + crd.accuracy + ' meters.');
+    $("#accuracy").text(crd.accuracy + ' m');
     // are we there yet?
     // parseInt is ROUGH!
     if (parseInt(target.latitude) === parseInt(crd.latitude) &&
@@ -56,7 +56,7 @@ function success(pos) {
 
         // sends it back for database handling
         $.getJSON('./_multilocs', res, function(data) {
-            $("#result").text(data.dists);
+            $("#result").text(data.dists + ' km');
         });
     });
 }

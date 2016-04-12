@@ -41,5 +41,3 @@ if __name__ == '__main__':
     ]
     dists = [haversine(targ, lalo) for lalo in lalos]
     print dists
-
-    # 51.5412621, -0.08813879999999999

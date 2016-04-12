@@ -10,22 +10,21 @@
         <div class="panel-heading btn-success"><h2 style="font-size:18px">
             Your rendezView</h2></div>
         <div class="panel-body" align="center">
-
             <form><div class="form-group">
                 <div class="input-group">
-                    <span class="input-group-addon">Add your rVitees</span>
+                    <span class="input-group-addon">Add rVites</span>
                     <input class="form-control" type="email" name="rvite_email"
-                           placeholder="Enter email here and it will automatically add once you finish typing.">
+                           placeholder="Enter email here; will automatically add once you finish typing.">
                 </div>
             </div></form>
             <table class="table-responsive">
-            <tr><th>Your current location</th><th><div id="placeName"></div></th></tr>
-            <tr><th>Accuracy</th><th><div id="accuracy"></div></th></tr>
-            <tr><th>Current distance to the rendezView, km</th><th><div id="result"></div></th></tr>
+            <tr><th id="clipped">Current locn</th><th id="clipped"><div id="placeName"></div></th></tr>
+            <tr><th id="clipped">Accuracy, +/-</th><th id="clipped"><div id="accuracy"></div></th></tr>
+            <tr><th id="clipped">Dist to rV</th><th id="clipped"><div id="result"></div></th></tr>
             {% for (k, v) in r_args %}
-                <tr><td>{{k}}</td><td>{{v}}</td></tr>
+                <tr><td id="clipped">{{k}}</td><td id="clipped">{{v}}</td></tr>
             {% endfor %}
-            <tr><td>rv_id</td><td>{{rv_id}}</td></tr>
+            <tr><td id="clipped">rv_id</td><td id="clipped">{{rv_id}}</td></tr>
             </table>
             <div id="ems_cont"></div>
         </div>

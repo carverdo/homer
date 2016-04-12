@@ -95,15 +95,23 @@ td, th {vertical-align: top; text-align: left;}
     border: 1px solid #ddd; /* order: width style color */
     -webkit-overflow-scrolling: touch;
 }
-/* #scroller {overflow-y: scroll;} */
+/* #scroller {overflow-y: scroll;}
 .table-responsive > .table {margin-bottom: 0;}
 .table-responsive > .table > tbody {
     display: in-line;
     overflow-y: scroll;
     overflow-x: hidden;
 }
+ */
 .table-responsive th,
 .table-responsive td {white-space: nowrap;}
+/* for the case where we deliberately want an overflow */
+.table #clipped {
+    max-width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 .prof_row_style {
     color: white;
