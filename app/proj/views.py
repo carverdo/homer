@@ -9,31 +9,9 @@ __project__ = 'ribcage'
 from flask import render_template, request, jsonify
 from ..log_auth.views import login_confirmed, set_template
 from . import proj
-from math import radians, cos, sin, asin, sqrt
+
 from config_vars import MAP_URL
-
-# ME = (51.53, -0.14)
-LALOS = [
-    (54.3220, -5.7030),
-    (50, -1),
-    (52, 0.5),
-    (52, -0.5)
-]
-
-
-def haversine((lat1, lon1), (lat2, lon2)):
-    """
-    Calculate the great circle distance between two points (km)
-    on the earth (specified in decimal degrees).
-    """
-    # convert decimal degrees to radians
-    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
-    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
-    c = 2 * asin(sqrt(a))
-    r = 6371 # Radius of earth in kilometers.
-    return round(c * r, 2)
+from havers import haversine
 
 
 # ========================
